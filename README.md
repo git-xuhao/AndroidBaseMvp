@@ -5,7 +5,7 @@
 
 ##  运行 Demo
 
-<img src="/screenshot/MVP-Arch-Demo.gif" style="width: 50%;">
+<img height=720 width=420 src="/screenshot/MVP-Arch-Demo.gif"/>
 
 ## LICENSE
 
