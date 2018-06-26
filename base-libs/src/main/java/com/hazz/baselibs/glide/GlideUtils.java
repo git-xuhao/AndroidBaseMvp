@@ -1,5 +1,12 @@
 package com.hazz.baselibs.glide;
 
+import android.content.Context;
+import android.text.TextUtils;
+import android.widget.ImageView;
+
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 /**
  * @author xuhao
  * @date 2018/6/11 17:36
