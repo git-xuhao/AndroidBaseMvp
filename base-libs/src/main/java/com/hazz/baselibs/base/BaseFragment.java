@@ -35,7 +35,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends RxFragment i
 
     private Unbinder unBinder;
 
-    private BaseMvpActivity mActivity;
+    private BaseActivity mActivity;
     /**
      * 缓存Fragment view
      */
@@ -74,8 +74,8 @@ public abstract class BaseFragment<T extends BasePresenter> extends RxFragment i
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof BaseMvpActivity) {
-            this.mActivity = (BaseMvpActivity) this.getActivity();
+        if (context instanceof BaseActivity) {
+            this.mActivity = (BaseActivity) this.getActivity();
         }
     }
 
@@ -108,7 +108,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends RxFragment i
     }
 
 
-    public BaseMvpActivity getBaseActivity() {
+    public BaseActivity getBaseActivity() {
         return mActivity;
     }
 
