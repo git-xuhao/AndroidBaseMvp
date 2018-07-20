@@ -5,9 +5,6 @@ import java.util.List;
 import okhttp3.Cookie;
 import okhttp3.HttpUrl;
 
-/**
- * Created by goldze on 2017/5/13.
- */
 public interface CookieStore {
 
     /** 保存url对应所有cookie */
