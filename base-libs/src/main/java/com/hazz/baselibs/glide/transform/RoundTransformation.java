@@ -7,9 +7,12 @@ import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.support.annotation.NonNull;
 
+import com.bumptech.glide.load.Key;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
+import com.bumptech.glide.load.resource.bitmap.TransformationUtils;
 
 import java.security.MessageDigest;
 
@@ -18,10 +21,13 @@ import java.security.MessageDigest;
  */
 public class RoundTransformation extends BitmapTransformation {
 
+    private static final String ID = RoundTransformation.class.getName();
+    private static final byte[] ID_BYTES = ID.getBytes(Key.CHARSET);
+
     private float radius = 0f;
 
     public RoundTransformation(Context context) {
-        this(context, 4);
+        this(context, 0);
     }
 
     public RoundTransformation(Context context, int dp) {
@@ -32,7 +38,8 @@ public class RoundTransformation extends BitmapTransformation {
 
     @Override
     protected Bitmap transform(BitmapPool pool, Bitmap toTransform, int outWidth, int outHeight) {
-        return roundCrop(pool, toTransform);
+        Bitmap bitmap = TransformationUtils.centerCrop(pool, toTransform, outWidth, outHeight);
+        return roundCrop(pool, bitmap);
     }
 
     private Bitmap roundCrop(BitmapPool pool, Bitmap source) {
@@ -53,7 +60,18 @@ public class RoundTransformation extends BitmapTransformation {
     }
 
     @Override
-    public void updateDiskCacheKey(MessageDigest messageDigest) {
+    public void updateDiskCacheKey(@NonNull MessageDigest messageDigest) {
+        messageDigest.update(ID_BYTES);
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return o instanceof RoundTransformation;
+    }
+
+    @Override
+    public int hashCode() {
+        return ID.hashCode();
     }
 }
